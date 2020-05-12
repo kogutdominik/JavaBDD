@@ -1,18 +1,29 @@
 public class Node {
     public Node(int nameOfNode) {
         this.nameOfNode="v"+nameOfNode;
-        this.colour="0";
+        this.colour=0;
     }
 
-    public String nameOfNode;
+    private int colour;
+    private String nameOfNode;
 
-    public String getColour() {
+
+    public String getNameOfNode() {
+        return nameOfNode;
+    }
+
+    public void setNameOfNode(String nameOfNode) {
+        this.nameOfNode = nameOfNode;
+    }
+
+
+
+    public int getColour() {
         return colour;
     }
 
-    public void setColour(String colour) {
+    public void setColour(int colour) {
         this.colour = colour;
     }
 
-    public String colour;
 }
