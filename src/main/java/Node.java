@@ -1,6 +1,7 @@
 public class Node {
     public Node(int nameOfNode) {
         this.nameOfNode="v"+nameOfNode;
+        this.colour="0";
     }
 
     public String nameOfNode;
