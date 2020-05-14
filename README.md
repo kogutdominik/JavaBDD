@@ -1,7 +1,8 @@
 # JavaBDD
-Version 1.1
-//GRAPH COLORING WITH THE USE OF LOGIC EQUATIONS. 
-//Library used: JDD-108
+Version 1.3
+GRAPH COLORING WITH THE USE OF LOGIC EQUATIONS. 
+
+Library used: JDD-108
 
   <dependency>
             <groupId>org.bitbucket.vahidi</groupId>
