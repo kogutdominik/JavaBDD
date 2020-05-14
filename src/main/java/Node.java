@@ -1,12 +1,12 @@
 public class Node {
-    public Node(int nameOfNode) {
-        this.nameOfNode="v"+nameOfNode;
-        this.colour=0;
-    }
 
-    private int colour;
     private String nameOfNode;
+    private int colour;
 
+    public Node(int nameOfNode) {
+        this.nameOfNode = "V" + nameOfNode;
+        this.colour = 0;
+    }
 
     public String getNameOfNode() {
         return nameOfNode;
@@ -16,8 +16,6 @@ public class Node {
         this.nameOfNode = nameOfNode;
     }
 
-
-
     public int getColour() {
         return colour;
     }
@@ -26,4 +24,11 @@ public class Node {
         this.colour = colour;
     }
 
+    @Override
+    public String toString() {
+        return "Node{" +
+                "nameOfNode='" + nameOfNode + '\'' +
+                ", colour=" + colour +
+                '}';
+    }
 }
