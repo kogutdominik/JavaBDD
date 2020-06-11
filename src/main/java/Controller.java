@@ -54,7 +54,7 @@ public class Controller {
             if (nodes.get(i).getColour() == 0)                                                                      //jezeli nie zostal jeszcze pokorowany
                 nodes.get(i).setColour(color + 1);                                                                  //przypis wszystkim niepokolorowanym (kazdy z nich jest zbiorem neizaleznym) ten sam kolor
         }
-        System.out.println("\n Ilosc kolorow to: " + (color + 1));                                                  //wyswietlenie informacji o iosci kolorow
+        System.out.println("\nLiczba użytych kolorów: " + (color));                                                  //wyswietlenie informacji o iosci kolorow
     }
 /*Zczytanie informacji z metody printSet zaimplementowanej w wykorzystanej bibliotece */
     public void expressionScanner(BDD bdd, int xfinal) {

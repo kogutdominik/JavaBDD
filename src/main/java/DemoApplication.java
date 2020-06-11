@@ -1,3 +1,5 @@
+import jdd.bdd.OptimizedCache;
+
 import java.io.IOException;
 
 public class DemoApplication {
@@ -6,7 +8,7 @@ public class DemoApplication {
         long start = System.currentTimeMillis();                                    //zmienna start do odmierzania czasu
 
         BDDController bddController = new BDDController();                          //obiekt klasy BDDController
-        int xfinal = bddController.readDataFromFile("graf_testowy1.txt");        //xfinal(korzen drzewa decyzyjnego) jako wynik metod z biblioteki JDD
+        int xfinal = bddController.readDataFromFile("graf4.txt");        //xfinal(korzen drzewa decyzyjnego) jako wynik metod z biblioteki JDD
         int numberOfNodes = bddController.getNumberOfNodes();                       //zczytanie liczby wierzcholkow z pliku
         Controller controller = new Controller();                                   //kontroler realizujacy kolorowanie grafu
 
@@ -14,11 +16,13 @@ public class DemoApplication {
         controller.createNodes(numberOfNodes);                                      //stworzenie listy wszystkich wierzcholkow
         controller.createNodesCollection(numberOfNodes);                            //stworz
         controller.addNodes();
+        long start2 = System.currentTimeMillis();
         controller.colorNodes();
         controller.printColor();
 
         //bddController.bdd.printSet(xfinal);
         long stop = System.currentTimeMillis();
-        System.out.println("Czas wykonania (w nanosekundach): " + (stop - start));
+        System.out.println("Czas wykonania: " + (stop - start)+"ms");
+        System.out.println("Czas kolorowania: " + (stop - start2)+"ms");
     }
 }
