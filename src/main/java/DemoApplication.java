@@ -8,7 +8,7 @@ public class DemoApplication {
         long start = System.currentTimeMillis();                                    //zmienna start do odmierzania czasu
 
         BDDController bddController = new BDDController();                          //obiekt klasy BDDController
-        int xfinal = bddController.readDataFromFile("graf4.txt");        //xfinal(korzen drzewa decyzyjnego) jako wynik metod z biblioteki JDD
+        int xfinal = bddController.readDataFromFile("graf_testowy1.txt");        //xfinal(korzen drzewa decyzyjnego) jako wynik metod z biblioteki JDD
         int numberOfNodes = bddController.getNumberOfNodes();                       //zczytanie liczby wierzcholkow z pliku
         Controller controller = new Controller();                                   //kontroler realizujacy kolorowanie grafu
 

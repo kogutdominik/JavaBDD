@@ -13,17 +13,20 @@ public class Controller {
     private Node nodeTemp;
     private String bddExpression;
     private int color = 0;
-/*Utworzenie głównej listy wierzcholkow, mającej (numberOfNodes) elementów*/
+
+    /*Utworzenie głównej listy wierzcholkow, mającej (numberOfNodes) elementów*/
     public void createNodes(int numberOfNodes) {
         for (int i = 0; i < numberOfNodes; i++)
             nodes.add(new Node(i + 1));                                                                //Numeracja zaczyna się od V1
     }
-/*Dodawanie kolejnych PUSTYCH zbiorow wierzcholkow do listy, pozniej dopiero przypisywane sa odpowiednie wiercholki */
+
+    /*Dodawanie kolejnych PUSTYCH zbiorow wierzcholkow do listy, pozniej dopiero przypisywane sa odpowiednie wiercholki */
     public void createNodesCollection(int numberOfNodes) {
         for (int k = numberOfNodes + 2; k < bddExpression.length() - 4; k = k + numberOfNodes + 2)                   //start od "2" korzenia; dopki nie zczyta wszystkiego-pierwszy korzen;zwiekszaj oilosc wirzcholkow \n\r
             this.nodesCollection.add(new NodesCollection(bddExpression.substring(k, k + numberOfNodes)));           //zbior wierzcholkow z pomienieciem pierwszego elementu "/n/r" traktowane jako 2 znaki
     }
-/*Dodawanie kolejnych wierzcholkow do zbioru wierchollkow||Okreslenie maksymalnych zbiorow niezaleznych*/
+
+    /*Dodawanie kolejnych wierzcholkow do zbioru wierchollkow||Okreslenie maksymalnych zbiorow niezaleznych*/
     public void addNodes() {
         for (int j = 0; j < nodesCollection.size(); j++) {                                                          //dla wszystkich elementow listy nodesCollection
             for (int i = 0; i < nodesCollection.get(j).stringOfExpression.length(); i++) {                          //dlugosc stringOfExpression = liczbie wierzcholkow,
@@ -33,7 +36,8 @@ public class Controller {
             }
         }
     }
-/*Kolorowanie wierzcholkow i jednoczesne usuwanie pokolorowanych ze wszystkich zbiorow z listy nodesCollection*/
+
+    /*Kolorowanie wierzcholkow i jednoczesne usuwanie pokolorowanych ze wszystkich zbiorow z listy nodesCollection*/
     public void colorNodes() {
         for (int i = 0; i < nodesCollection.size(); i++) {                                                          //wszystkie zbiory niezalezne
             Collections.sort(nodesCollection, (d1, d2) -> {                                                         //sortowanie po ilosci wierzcholkow  w zbiorze od najweiekszej do najmniejszej
@@ -50,13 +54,17 @@ public class Controller {
             }
         }
 
+        if (nodes.size() != 0)                                                                                      //jeżeli zostały wierzcholki(nieuwzglednione w korzeniu) do pokolorowania
+            color = color + 1;                                                                                       //pokoloruj WSZYSTKIE pozostałe pierwszym dostępnym kolorem
+
         for (int i = 0; i < nodes.size(); i++) {                                                                    //pokolorowanie dodatkowe wierzcholkow nieuwzglednionych w korzeniu
             if (nodes.get(i).getColour() == 0)                                                                      //jezeli nie zostal jeszcze pokorowany
-                nodes.get(i).setColour(color + 1);                                                                  //przypis wszystkim niepokolorowanym (kazdy z nich jest zbiorem neizaleznym) ten sam kolor
+                nodes.get(i).setColour(color);                                                                      //przypis wszystkim niepokolorowanym (kazdy z nich jest zbiorem neizaleznym) ten sam kolor
         }
         System.out.println("\nLiczba użytych kolorów: " + (color));                                                  //wyswietlenie informacji o iosci kolorow
     }
-/*Zczytanie informacji z metody printSet zaimplementowanej w wykorzystanej bibliotece */
+
+    /*Zczytanie informacji z metody printSet zaimplementowanej w wykorzystanej bibliotece */
     public void expressionScanner(BDD bdd, int xfinal) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream ps = new PrintStream(baos);
@@ -67,7 +75,8 @@ public class Controller {
         System.setOut(old);                                                                                         //przywrocenie starego buforu
         bddExpression = baos.toString();                                                                            //zapis odczytanych informacji do zmiennej bddExpression
     }
-/*Wyswietlenie nazwy i koloru kazdego wierzcholka z listy GLOWNEJ*/
+
+    /*Wyswietlenie nazwy i koloru kazdego wierzcholka z listy GLOWNEJ*/
     public void printColor() {
         for (int i = 0; i < nodes.size(); i++)
             System.out.println(nodes.get(i).toString());
