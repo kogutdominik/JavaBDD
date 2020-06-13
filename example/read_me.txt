@@ -1,4 +1,4 @@
-Zestaw plików do testów. Pliki z rzszerzeniem ".bat" umożliwiają szybkie otwarcie programów ".jar"napisanych w JAVIE.
+Zestaw plików do testów. Pliki z rozszerzeniem ".bat" umożliwiają szybkie otwarcie programów ".jar"napisanych w JAVIE.
 
 ***GraphGenerator.jar*** --- własny program do generacji grafów o określonej liczbie wierzchołków i krawędzi
 ***BDDkolorowanie.jar*** --- program z własnym zaimplementowanym algorytmem kolorowania wykorzystującym BDD
